@@ -1,0 +1,140 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<NativeDicomModel>
+    <DicomAttribute keyword="SOPClassUID" tag="00080016" vr="UI">
+        <Value number="1">1.2.840.10008.5.1.4.1.1.2</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="SOPInstanceUID" tag="00080018" vr="UI">
+        <Value number="1">1.2.840.113747.20031110112713.2888.3540.853</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="AcquisitionDate" tag="00080022" vr="DA">
+        <Value number="1">20030101</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="AcquisitionTime" tag="00080032" vr="TM">
+        <Value number="1">141743.400</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="AccessionNumber" tag="00080050" vr="SH" />
+    <DicomAttribute keyword="Modality" tag="00080060" vr="CS">
+        <Value number="1">CT</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="PatientName" tag="00100010" vr="PN">
+        <PersonName number=1>
+            <Alphabetic>
+                <FamilyName>TREMBLAY</FamilyName>
+                <GivenName>ALICE</GivenName>
+                <MiddleName><MiddleName>
+            </Alphabetic>
+        </PersonName>
+    </DicomAttribute>
+    <DicomAttribute keyword="PatientID" tag="00100020" vr="LO">
+        <Value number="1">132123123</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="PatientBirthDate" tag="00100030" vr="DA">
+        <Value number="1">19330101</Value>
+    </DicomAttribute>
+    <DicomAttribute keyword="PatientSex" tag="00100040" vr="CS">
+        <Value number="1">F</Value>
+    </DicomAttribute>
+
+
+3 erreurs
+Thought for 6s
+
+Les 3 erreurs XML sont probablement celles-ci :
+
+Attribut sans guillemets
+<PersonName number=1>
+
+Doit être :
+
+<PersonName number="1">
+Balise MiddleName mal fermée
+<MiddleName><MiddleName>
+
+Doit être soit :
+
+<MiddleName></MiddleName>
+
+ou plus propre :
+
+<MiddleName />
+Balise racine NativeDicomModel non fermée
+À la fin du fichier, il faut ajouter :
+</NativeDicomModel>
+
+Version corrigée de la partie problématique :
+
+<DicomAttribute keyword="PatientName" tag="00100010" vr="PN">
+    <PersonName number="1">
+        <Alphabetic>
+            <FamilyName>TREMBLAY</FamilyName>
+            <GivenName>ALICE</GivenName>
+            <MiddleName />
+        </Alphabetic>
+    </PersonName>
+</DicomAttribute>
+
+Et tout à la fin du fichier :
+
+</NativeDicomModel>
+Pasted text.txt
+Document
+section 4. seulement
+config.xml
+File
+Laboratoire 4 - Création de fichiers DICOM.pdf
+PDF
+Rapport_Laboratoire4.docx
+Document
+ct.dcm
+File
+DICOMSR.txt
+Document
+image03.dcm
+File
+kos.dcm
+File
+report01.dcm
+File
+report02.dcm
+File
+report03.dcm
+File
+SR.txt
+Document
+DICOMSR.xml
+File
+verifie le fichier config.xml
+
+on est au lab4
+
+mon coequipier a essaye d'avancer mais il a du refaire le fichier config xml
+still incomplet
+
+verifie aussi le pdf Laboratoire 4 - Création de fichiers DICOM pour comprendre quoi faire
+tu peux ajouter de l'information dans le rapport
+Stopped thinking
+思考時間: 1m 23s
+
+Télécharger le fichier config.xml amélioré
+
+Le XML est syntaxiquement valide. J’ai corrigé les tags, VR, valeurs, UID, dates/heures, supprimé le doublon de InstanceNumber et complété les principaux modules du Secondary Capture. Je n’ai pas encore modifié le rapport.
+
+思考時間: 14s
+
+Le lien précédent était cassé. Voici le fichier XML directement :
+
+Télécharger config_lab4_ameliore.xml
+
+dit-moi oui ou non t'es capable de faire tout le reste ou bien il y d'autres choses que je dois faire manuellement
+Thought for 4s
+
+Oui, je suis capable de faire tout le reste : compléter les XML, préparer les fichiers SR/KOS, corriger et compléter le rapport, répondre aux questions et vérifier la cohérence des UID, tags, VR et références.
+
+Ce que tu devras probablement faire manuellement :
+
+exécuter jpg2dcm, xml2dcm, dcm2xml ou dcmdump sur ton ordinateur si dcm4che n’est pas disponible ici;
+ouvrir les fichiers dans Weasis pour confirmer visuellement qu’ils s’affichent correctement;
+me transmettre les erreurs éventuelles ou des captures si Weasis affiche quelque chose d’anormal;
+faire la remise finale sur Moodle.
+
+Donc : oui pour tout le contenu et les fichiers; validation visuelle finale dans Weasis probablement manuelle.
